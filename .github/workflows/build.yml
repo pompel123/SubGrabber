@@ -1,18 +1,24 @@
-name: 'Build RogueMaster FAP'
-on:
-  push:
-  pull_request:
+name: "FAP: Build and lint"
+on: [push, pull_request]
 
 jobs:
-  build-fap:
+  ufbt-build-action:
     runs-on: ubuntu-latest
+    name: "ufbt: Build for Dev branch"
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build Flipper App (.fap)
-        uses: flipperdevices/fbt-action@v1
+      - name: Build with ufbt
+        uses: flipperdevices/flipperzero-ufbt-action@v0.1
+        id: build-app
         with:
-          # Point to RogueMaster's dev branch or a specific tag
-          sdk-channel: custom
-          sdk-url: https://github.com
+          # Set to 'release' to build for latest published release version
+          sdk-channel: dev
+
+      - name: Upload app artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.event.repository.name }}-${{ steps.build-app.outputs.suffix }}
+          path: ${{ steps.build-app.outputs.fap-artifacts }}
+          retention-days: 7

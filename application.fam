@@ -1,0 +1,10 @@
+App(
+    appid="universal_grabber",
+    name="Universal Grabber",
+    apptype=FlipperAppType.PLUGIN,
+    entry_point="universal_grabber_app",
+    requires=["gui", "subghz", "notification", "storage"],
+    stack_size=4096,
+    fap_icon="A_14x14",
+    fap_category="Sub-GHz",
+)

@@ -7,4 +7,17 @@ App(
     stack_size=4096,
     fap_icon="A_14x14",
     fap_category="Sub-GHz",
+    sources=[
+        "universal_grabber.c",
+        "scenes/scene_main_menu.c",
+        "scenes/scene_send_main.c",
+        "scenes/scene_send_saved.c",
+        "scenes/scene_grabbing.c",
+        "scenes/scene_bruting.c",
+        "scenes/scene_jammer.c",
+        "scenes/scene_copy.c",
+        "scenes/scene_algo_sender.c",
+        "scenes/scene_settings.c",
+        "scenes/scene_utilities.c",
+    ],
 )
